@@ -43,10 +43,8 @@ class Table extends Component {
 					)
 				})}
 			</div>
-			
 		);
 	}
-
 }
 
 export default Table;
