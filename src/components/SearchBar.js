@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			term: ''
-		};
-	}
-
 	render() {
-		const { value, onChange } = this.props;
+		const { value } = this.props;
 		const inputStyle = { width: '40%', textAlign: 'center' };
 
 		return (
@@ -18,7 +11,7 @@ export default class SearchBar extends Component {
 					type="text"
 					value={value}
 					style={inputStyle}
-					onChange={onChange}
+					onChange={e => this.props.onSearchChange(e.target.value)}
 					placeholder="Search"
 				/>
 			</div>

@@ -34,11 +34,12 @@ export default class App extends Component {
 
 	onSearchChange(searchTerm) {
 		this.setState({ searchTerm });
-		this.fetchSearchTopStories(searchTerm);
+		_.debounce(term => {
+			this.fetchSearchTopStories(term);
+		}, 500)(searchTerm);
 	}
 
 	setSearchTopStories(result) {
-		console.log(result);
 		const { hits, page } = result;
 		const oldHits = page !== 0 ? this.state.result.hits : [];
 		const updatedHits = [...oldHits, ...hits];
@@ -57,21 +58,17 @@ export default class App extends Component {
 	}
 
 	render() {
-		const { result, searchTerm, err } = this.state;
+		const { err, result, searchTerm } = this.state;
 		if (err) {
 			return <p>Something went wrong</p>;
 		}
 		const center = { textAlign: 'center' };
-		const onSearchChange = _.debounce(term => {
-			this.onSearchChange(term);
-		}, 500);
-
 		const page = (result && result.page) || 0;
 
 		return (
 			<div className="page">
 				<Header />
-				<SearchBar value={searchTerm} onChange={onSearchChange} />
+				<SearchBar value={searchTerm} onSearchChange={this.onSearchChange} />
 				{err ? (
 					<div style={center}>
 						<p>Something went wrong</p>
