@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
-export default class Search extends Component {
+export default class SearchBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			term: ''
+		};
+	}
+
 	render() {
 		const { value, onChange } = this.props;
-		const inputStyle = { width: '50%', textAlign: 'center' };
+		const inputStyle = { width: '40%', textAlign: 'center' };
 
 		return (
 			<div className="search-bar">

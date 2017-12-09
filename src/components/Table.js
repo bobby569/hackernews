@@ -16,26 +16,30 @@ class Table extends Component {
 		};
 		return (
 			<div className="table">
-				{list.map(item => {
-					return (
-						<div key={item.objectID} className="table-row">
-							<span style={largeColumn}>
-								<a href={item.url}>{item.title}</a>
-							</span>
-							<span style={midColumn}>{item.author}</span>
-							<span style={smallColumn}>{item.num_comments}</span>
-							<span style={smallColumn}>{item.points}</span>
-							<span style={smallColumn}>
-								<Button
-									onClick={() => onDismiss(item.objectID)}
-									className="button-inline"
-								>
-									Dismiss
-								</Button>
-							</span>
-						</div>
-					);
-				})}
+				{list
+					.filter(item => {
+						return item.title;
+					})
+					.map(item => {
+						return (
+							<div key={item.objectID} className="table-row">
+								<span style={largeColumn}>
+									<a href={item.url}>{item.title}</a>
+								</span>
+								<span style={midColumn}>{item.author}</span>
+								<span style={smallColumn}>{item.num_comments}</span>
+								<span style={smallColumn}>{item.points}</span>
+								<span style={smallColumn}>
+									<Button
+										onClick={() => onDismiss(item.objectID)}
+										className="button-inline"
+									>
+										Dismiss
+									</Button>
+								</span>
+							</div>
+						);
+					})}
 			</div>
 		);
 	}
