@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import Button from './Button';
 
 class Table extends Component {
-	render () {
+	render() {
 		const { list, onDismiss } = this.props;
 		const largeColumn = {
-			width: '40%',
+			width: '40%'
 		};
 		const midColumn = {
-			width: '30%',
+			width: '30%'
 		};
 		const smallColumn = {
 			width: '10%'
@@ -22,15 +22,9 @@ class Table extends Component {
 							<span style={largeColumn}>
 								<a href={item.url}>{item.title}</a>
 							</span>
-							<span style={midColumn}>
-								{item.author}
-							</span>
-							<span style={smallColumn}>
-								{item.num_comments}
-							</span>
-							<span style={smallColumn}>
-								{item.points}
-							</span>
+							<span style={midColumn}>{item.author}</span>
+							<span style={smallColumn}>{item.num_comments}</span>
+							<span style={smallColumn}>{item.points}</span>
 							<span style={smallColumn}>
 								<Button
 									onClick={() => onDismiss(item.objectID)}
@@ -40,7 +34,7 @@ class Table extends Component {
 								</Button>
 							</span>
 						</div>
-					)
+					);
 				})}
 			</div>
 		);
