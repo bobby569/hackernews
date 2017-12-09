@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+export default class Search extends Component {
 	render() {
-		const { value, onChange, onSubmit, children } = this.props;
+		const { value, onChange } = this.props;
+		const inputStyle = { width: '50%', textAlign: 'center' };
 
 		return (
-			<form onSubmit={onSubmit}>
-				<input type="text" value={value} onChange={onChange} />
-				<button type="submit">{children}</button>
-			</form>
+			<div className="search-bar">
+				<input
+					type="text"
+					value={value}
+					style={inputStyle}
+					onChange={onChange}
+					placeholder="Search"
+				/>
+			</div>
 		);
 	}
 }
-
-export default Search;

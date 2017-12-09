@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Button extends Component {
+export default class Button extends Component {
 	render() {
 		const { onClick, className = '', children } = this.props;
 
@@ -11,5 +11,3 @@ class Button extends Component {
 		);
 	}
 }
-
-export default Button;

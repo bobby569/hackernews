@@ -1,5 +1,5 @@
 .page {
-	margin: 20px;
+	margin: 30px;
 }
 
 .interactions {
@@ -60,4 +60,9 @@
 .button-active {
 	border-radius: 0;
 	border-bottom: 1px solid #38bb6c;
+}
+
+.search-bar {
+	margin: 10px;
+	text-align: center;
 }
