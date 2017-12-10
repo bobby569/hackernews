@@ -2,8 +2,8 @@ import React from 'react';
 import Row from './Row';
 
 export default props => (
-	<table className="bordered">
-		<tbody>
+	<div className="bordered">
+		<div style={{ width: '90%', margin: '10px auto' }}>
 			{props.list
 				.filter(item => {
 					return item.title;
@@ -11,6 +11,6 @@ export default props => (
 				.map(item => {
 					return <Row key={item.objectID} item={item} onDismiss={props.onDismiss} />;
 				})}
-		</tbody>
-	</table>
+		</div>
+	</div>
 );

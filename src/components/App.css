@@ -58,3 +58,8 @@
 	margin: 10px;
 	text-align: center;
 }
+
+.table__row:hover,
+.table__row:focus {
+	background: #e7e7e7;
+}

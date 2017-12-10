@@ -10,19 +10,19 @@ export default class Row extends Component {
 		const smallColumn = { width: '10%' };
 
 		return (
-			<tr className="table-row">
-				<td style={largeColumn}>
+			<div className="table-row z-depth-1 table__row">
+				<span style={largeColumn}>
 					<a href={item.url}>{item.title}</a>
-				</td>
-				<td style={midColumn}>{item.author}</td>
-				<td style={smallColumn}>{item.num_comments}</td>
-				<td style={smallColumn}>{item.points}</td>
-				<td style={smallColumn}>
+				</span>
+				<span style={midColumn}>{item.author}</span>
+				<span style={smallColumn}>{item.num_comments}</span>
+				<span style={smallColumn}>{item.points}</span>
+				<span style={smallColumn}>
 					<Button onClick={() => onDismiss(item.objectID)} className="button-inline">
 						Dismiss
 					</Button>
-				</td>
-			</tr>
+				</span>
+			</div>
 		);
 	}
 }
