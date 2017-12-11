@@ -1,13 +1,14 @@
 import React from 'react';
 
 export default props => (
-	<div className="search-bar">
+	<form className="search-bar" onSubmit={props.onSubmit}>
 		<input
 			type="text"
 			value={props.value}
-			style={{ width: '40%', textAlign: 'center' }}
-			onChange={e => props.onSearchChange(e.target.value)}
+			style={{ width: '30%', textAlign: 'center' }}
+			onChange={props.onChange}
 			placeholder="Search"
 		/>
-	</div>
+		<button type="submit">Search</button>
+	</form>
 );

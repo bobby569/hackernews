@@ -1,5 +1,4 @@
 import './App.css';
-import _ from 'lodash';
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button from './Button';
@@ -18,6 +17,7 @@ export default class App extends Component {
 
 		this.onDismiss = this.onDismiss.bind(this);
 		this.onSearchChange = this.onSearchChange.bind(this);
+		this.onSearchSubmit = this.onSearchSubmit.bind(this);
 	}
 
 	componentDidMount() {
@@ -47,12 +47,14 @@ export default class App extends Component {
 			.catch(err => this.setState({ err }));
 	}
 
-	onSearchChange(searchTerm) {
-		this.setState({ searchTerm });
+	onSearchChange(e) {
+		this.setState({ searchTerm: e.target.value });
+	}
 
-		_.debounce(term => {
-			this.fetchSearchTopStories(term);
-		}, 500)(searchTerm);
+	onSearchSubmit(e) {
+		e.preventDefault();
+		const { searchTerm } = this.state;
+		this.fetchSearchTopStories(searchTerm);
 	}
 
 	render() {
@@ -63,7 +65,11 @@ export default class App extends Component {
 		return (
 			<div className="page">
 				<Header />
-				<SearchBar value={searchTerm} onSearchChange={this.onSearchChange} />
+				<SearchBar
+					value={searchTerm}
+					onChange={this.onSearchChange}
+					onSubmit={this.onSearchSubmit}
+				/>
 				{err ? (
 					<div style={center}>
 						<h2>Something went wrong</h2>
